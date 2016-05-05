@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :my_link_to
 
+  include ApplicationHelper
+
   def current_user
     return nil unless session[:session_token]
     User.find_by(session_token: session[:session_token])
