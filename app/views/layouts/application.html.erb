@@ -8,6 +8,17 @@
 </head>
 <body>
 
+
+  <!-- fix these illegal link_to -->
+    <% if current_user.nil? %>
+      <%= my_link_to("Sign in", new_session_url) %>
+       or
+      <%= my_link_to "Sign up", new_user_url %>
+    <% else %>
+      <%= current_user.email %>
+      <%= button_to "Logout", session_url, method: :delete %>
+    <% end %>
+
 <%= yield %>
 
 </body>
